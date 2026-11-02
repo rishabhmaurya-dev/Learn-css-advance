@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PositionLab - CSS Position Playground</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#hero">
+          <span class="brand-mark">P</span>
+          <span>Position<span class="brand-accent">Lab</span></span>
+        </a>
+        <nav class="nav" aria-label="Sections">
+          <a href="#values">Values</a>
+          <a href="#relative">Relative</a>
+          <a href="#absolute">Absolute</a>
+          <a href="#fixed">Fixed</a>
+          <a href="#sticky">Sticky</a>
+          <a href="#stacking">Z-index</a>
+          <a href="#editor">Editor</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="hero" class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">HTML + CSS + a little JS</p>
+          <h1>Master <span class="grad">CSS Position</span> by playing.</h1>
+          <p class="lead">
+            Five values, one superpower: controlling exactly where an element
+            lands. Scroll through live demos of static, relative, absolute,
+            fixed and sticky positioning.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#values">Explore the values</a>
+            <a class="btn btn-ghost" href="#editor">Try the live editor</a>
+          </div>
+          <ul class="hero-facts">
+            <li><strong>5</strong> position values</li>
+            <li><strong>0</strong> dependencies</li>
+            <li><strong>100%</strong> responsive</li>
+          </ul>
+        </div>
+
+        <div class="hero-stage">
+          <div class="hero-card">
+            <div class="hero-glow"></div>
+            <span class="float-chip chip-static">static</span>
+            <span class="float-chip chip-relative">relative</span>
+            <span class="float-chip chip-absolute">absolute</span>
+            <span class="float-chip chip-sticky">sticky</span>
+            <div class="hero-window">
+              <div class="window-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <code>
+                position: absolute;<br />
+                top: 20px;<br />
+                right: 20px;
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="values" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Cheat sheet</p>
+          <h2>Five values, five behaviours</h2>
+          <p class="lead">
+            Every offset (<code>top</code>, <code>right</code>,
+            <code>bottom</code>, <code>left</code>) only works when an element
+            is positioned - meaning its <code>position</code> is not
+            <code>static</code>.
+          </p>
+        </div>
+
+        <div class="value-grid">
+          <article class="value-card">
+            <div class="value-top">
+              <span class="pill pill-static">static</span>
+              <span class="tag">default</span>
+            </div>
+            <p>
+              Normal flow. Elements stack in order and offsets are simply
+              ignored.
+            </p>
+            <code class="snippet">position: static;</code>
+          </article>
+
+          <article class="value-card">
+            <div class="value-top">
+              <span class="pill pill-relative">relative</span>
+            </div>
+            <p>
+              Shifts from its own normal spot, but keeps the space it occupied.
+            </p>
+            <code class="snippet">position: relative;</code>
+          </article>
+
+          <article class="value-card">
+            <div class="value-top">
+              <span class="pill pill-absolute">absolute</span>
+            </div>
+            <p>
+              Leaves the flow and anchors to the nearest positioned ancestor.
+            </p>
+            <code class="snippet">position: absolute;</code>
+          </article>
+
+          <article class="value-card">
+            <div class="value-top">
+              <span class="pill pill-fixed">fixed</span>
+            </div>
+            <p>Pins to the viewport and stays put while the page scrolls.</p>
+            <code class="snippet">position: fixed;</code>
+          </article>
+
+          <article class="value-card">
+            <div class="value-top">
+              <span class="pill pill-sticky">sticky</span>
+            </div>
+            <p>
+              Scrolls normally, then sticks once it crosses its offset limit.
+            </p>
+            <code class="snippet">position: sticky;</code>
+          </article>
+        </div>
+      </section>
+      <section id="relative" class="section demo">
+        <div class="section-head">
+          <p class="eyebrow">Demo 01</p>
+          <h2>Relative - nudge without breaking the layout</h2>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-stage">
+            <div class="row">
+              <div class="box">1</div>
+              <div class="box is-relative">2</div>
+              <div class="box">3</div>
+            </div>
+          </div>
+          <aside class="demo-note">
+            <h3>Box 2 moved, box 3 did not</h3>
+            <p>
+              Relative positioning offsets the element from where it would
+              normally sit. The original space is still reserved, which is why
+              box 3 never slides up into the gap.
+            </p>
+            <pre><code>.box-2 {
+  position: relative;
+  top: -22px;
+  left: 26px;
+}</code></pre>
+          </aside>
+        </div>
+      </section>
+
+      <section id="absolute" class="section demo">
+        <div class="section-head">
+          <p class="eyebrow">Demo 02</p>
+          <h2>Absolute - pin anything to a parent corner</h2>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-stage">
+            <article class="product">
+              <span class="badge">New</span>
+              <button class="like" type="button" aria-label="Like">
+                &#9829;
+              </button>
+              <div class="thumb"></div>
+              <div class="product-body">
+                <h3>Sunset Lamp</h3>
+                <p>Warm light for late-night CSS practice.</p>
+                <span class="price">$49</span>
+              </div>
+            </article>
+          </div>
+          <aside class="demo-note">
+            <h3>The parent is the anchor</h3>
+            <p>
+              The badge and the heart are absolutely positioned children of the
+              card. Because the card is <code>position: relative</code>, they
+              stick to its edges - not the page.
+            </p>
+            <pre><code>.product { position: relative; }
+.badge   { position: absolute;
+           top: -14px; left: 18px; }</code></pre>
+            <p class="tooltip-line">
+              Hover the chip:
+              <span class="tooltip">
+                tooltip
+                <span class="tooltip-text">I am position: absolute</span>
+              </span>
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section id="fixed" class="section demo">
+        <div class="section-head">
+          <p class="eyebrow">Demo 03</p>
+          <h2>Fixed - glued to the screen</h2>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-stage">
+            <div class="screen">
+              <div class="screen-bar">fixed top bar</div>
+              <div class="screen-lines">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <aside class="demo-note">
+            <h3>It ignores scrolling</h3>
+            <p>
+              The real navbar at the top of this page is fixed. So is the
+              floating arrow button in the bottom-right corner - it never leaves
+              the viewport while you scroll.
+            </p>
+            <pre><code>.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}</code></pre>
+          </aside>
+        </div>
+      </section>
+
+      <section id="sticky" class="section demo">
+        <div class="section-head">
+          <p class="eyebrow">Demo 04</p>
+          <h2>Sticky - scroll, then stop</h2>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-stage">
+            <div class="sticky-panel">
+              <article>
+                <h3 class="sticky-title">position: sticky</h3>
+                <p>
+                  This panel scrolls on its own. The heading above will follow
+                  you until it reaches the top of the panel, then stay there.
+                </p>
+                <p>
+                  Keep scrolling inside the panel to see the heading stick and
+                  the content slide underneath it.
+                </p>
+                <p>
+                  Sticky is the least surprising of the positioned values: it
+                  still takes up space in normal flow.
+                </p>
+              </article>
+              <article>
+                <h3 class="sticky-title">Sticks at top: 0</h3>
+                <p>
+                  The offset tells the browser the exact point where the element
+                  should stop scrolling. Here it is the very top of the panel.
+                </p>
+                <p>
+                  A common real-world use is a section header inside a long
+                  list, or a table header that stays visible.
+                </p>
+              </article>
+              <article>
+                <h3 class="sticky-title">Releases at the end</h3>
+                <p>
+                  A sticky element only sticks inside its parent. When the
+                  parent scrolls away, the element goes with it.
+                </p>
+                <p>
+                  That is the difference between sticky and fixed: fixed is tied
+                  to the viewport, sticky is tied to its container.
+                </p>
+              </article>
+            </div>
+          </div>
+          <aside class="demo-note">
+            <h3>Try it</h3>
+            <p>
+              Scroll the card on the left. Each heading sticks to the top of the
+              panel until its own section is finished.
+            </p>
+            <pre><code>.sticky-title {
+  position: sticky;
+  top: 0;
+}</code></pre>
+            <p class="muted-note">
+              The parent must be taller than the sticky element, and it must not
+              have <code>overflow: hidden</code>.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section id="stacking" class="section demo">
+        <div class="section-head">
+          <p class="eyebrow">Demo 05</p>
+          <h2>Z-index - who sits on top?</h2>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-stage">
+            <div class="stack">
+              <div class="stack-card s1"><span>z-index: 1</span></div>
+              <div class="stack-card s2"><span>z-index: 2</span></div>
+              <div class="stack-card s3"><span>z-index: 3</span></div>
+            </div>
+          </div>
+          <aside class="demo-note">
+            <h3>Overlap is controlled by z-index</h3>
+            <p>
+              The three cards overlap on purpose. Higher <code>z-index</code>
+              wins, but the property only applies to positioned elements (or
+              flex and grid children).
+            </p>
+            <pre><code>.s1 { position: absolute; z-index: 1; }
+.s3 { position: absolute; z-index: 3; }</code></pre>
+            <p class="muted-note">
+              Without positioning, <code>z-index</code> does nothing at all.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="editor" class="section editor-section">
+        <div class="section-head">
+          <p class="eyebrow">Live editor</p>
+          <h2>Write CSS, watch the preview move</h2>
+          <p class="lead">
+            Edit the rule on the left and the box on the right updates
+            instantly. Pick a preset to see each position value in action.
+          </p>
+        </div>
+
+        <div class="editor-shell">
+          <div class="editor-toolbar">
+            <div class="editor-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="editor-file">playground.css</span>
+            <div class="preset-row">
+              <button
+                class="preset is-active"
+                type="button"
+                data-preset="relative"
+              >
+                Relative
+              </button>
+              <button class="preset" type="button" data-preset="absolute">
+                Absolute
+              </button>
+              <button class="preset" type="button" data-preset="fixed">
+                Fixed
+              </button>
+              <button class="preset" type="button" data-preset="sticky">
+                Sticky
+              </button>
+              <button class="preset" type="button" data-preset="center">
+                Center
+              </button>
+            </div>
+          </div>
+
+          <div class="editor-body">
+            <div class="editor-code">
+              <div class="line-numbers" id="lineNumbers">1</div>
+              <textarea
+                id="cssEditor"
+                spellcheck="false"
+                autocapitalize="off"
+                autocomplete="off"
+                aria-label="CSS editor"
+              ></textarea>
+            </div>
+            <div class="editor-preview">
+              <div class="preview-head">
+                <span class="preview-label">Live preview</span>
+                <button class="preview-reset" type="button" id="resetEditor">
+                  Reset
+                </button>
+              </div>
+              <div
+                id="preview"
+                role="region"
+                aria-label="Live CSS preview"
+              ></div>
+            </div>
+          </div>
+
+          <div class="editor-status">
+            <span id="editorStatus">preset: relative</span>
+            <span class="editor-hint">Selectors: .stage, .box, .box-2</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section outro">
+        <div class="outro-card">
+          <div>
+            <p class="eyebrow">One more trick</p>
+            <h2>A modal centered with absolute + fixed</h2>
+            <p>
+              The overlay uses <code>position: fixed</code> to cover the
+              viewport, and the dialog is centered with
+              <code>position: absolute; inset: 0; margin: auto;</code>.
+            </p>
+          </div>
+          <a class="btn btn-primary" href="#modal">Open the centered modal</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>PositionLab - a tiny CSS position playground with a live editor.</p>
+      <p class="footer-meta">static / relative / absolute / fixed / sticky</p>
+    </footer>
+
+    <a class="to-top" href="#hero" aria-label="Back to top">&#8593;</a>
+
+    <div id="modal" class="modal">
+      <a class="modal-overlay" href="#close" aria-label="Close modal"></a>
+      <div
+        class="modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <a class="modal-close" href="#close" aria-label="Close">&#215;</a>
+        <p class="eyebrow">position: fixed + absolute</p>
+        <h2 id="modal-title">Perfectly centered</h2>
+        <p>
+          The dark overlay is fixed to the viewport. The card inside is
+          absolutely positioned and centered with automatic margins.
+        </p>
+        <pre><code>.overlay { position: fixed; inset: 0; }
+.dialog  { position: absolute;
+           inset: 0; margin: auto;
+           width: 420px; height: max-content; }</code></pre>
+        <a class="btn btn-primary" href="#close">Got it</a>
+      </div>
+    </div>
+
+    <script>
+      const editor = document.getElementById("cssEditor");
+      const preview = document.getElementById("preview");
+      const lineNumbers = document.getElementById("lineNumbers");
+      const editorStatus = document.getElementById("editorStatus");
+      const presetButtons = document.querySelectorAll(".preset");
+      const resetButton = document.getElementById("resetEditor");
+
+      const baseCSS = `
+        * { box-sizing: border-box; }
+        .screen {
+          height: 100%;
+          padding: 18px;
+          overflow-y: auto;
+          overscroll-behavior: contain;
+          background: #f8fafc;
+          color: #111827;
+          font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+        }
+        .stage {
+          display: flex;
+          align-items: flex-start;
+          gap: 14px;
+          min-height: 300px;
+          padding: 18px;
+          border: 2px dashed #c7d2fe;
+          border-radius: 16px;
+          background-color: #ffffff;
+          background-image:
+            linear-gradient(#f1f5f9 1px, transparent 1px),
+            linear-gradient(90deg, #f1f5f9 1px, transparent 1px);
+          background-size: 22px 22px;
+        }
+        .box {
+          width: 76px;
+          height: 76px;
+          display: grid;
+          place-items: center;
+          border-radius: 14px;
+          border: 1.5px solid #c7d2fe;
+          background: #eef2ff;
+          color: #4338ca;
+          font-size: 1.1rem;
+          font-weight: 800;
+        }
+        .box-2 {
+          background: linear-gradient(135deg, #6366f1, #8b5cf6);
+          border-color: transparent;
+          color: #ffffff;
+          box-shadow: 0 14px 26px rgba(99, 102, 241, 0.32);
+        }
+      `;
+
+      const previewHTML = `
+        <div class="stage">
+          <div class="box box-1">1</div>
+          <div class="box box-2">2</div>
+          <div class="box box-3">3</div>
+        </div>
+      `;
+
+      const shadowRoot = preview.attachShadow({ mode: "open" });
+      shadowRoot.innerHTML = `
+        <style>${baseCSS}</style>
+        <style class="user-style"></style>
+        <div class="screen">${previewHTML}</div>
+      `;
+      const userStyle = shadowRoot.querySelector(".user-style");
+
+      const presets = {
+        relative: `.box-2 {
+  position: relative;
+  top: -20px;
+  left: 30px;
+}`,
+        absolute: `.stage {
+  min-height: 280px;
+}
+
+.box-2 {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+}`,
+        fixed: `.box-2 {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+}`,
+        sticky: `.stage {
+  display: block;
+  min-height: 620px;
+}
+
+.box {
+  margin-bottom: 14px;
+}
+
+.box-2 {
+  position: sticky;
+  top: 16px;
+}`,
+        center: `.box-2 {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}`,
+      };
+
+      function renderPreview() {
+        userStyle.textContent = editor.value;
+      }
+
+      function renderLines() {
+        const total = editor.value.split("\n").length;
+        lineNumbers.textContent = Array.from(
+          { length: total },
+          (_, index) => index + 1,
+        ).join("\n");
+      }
+
+      function update() {
+        renderLines();
+        renderPreview();
+      }
+
+      function selectPreset(name) {
+        editor.value = presets[name];
+        presetButtons.forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.preset === name);
+        });
+        editorStatus.textContent = `preset: ${name}`;
+        editor.scrollTop = 0;
+        lineNumbers.scrollTop = 0;
+        update();
+      }
+
+      presetButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          selectPreset(button.dataset.preset);
+        });
+      });
+
+      resetButton.addEventListener("click", () => {
+        selectPreset("relative");
+      });
+
+      editor.addEventListener("input", () => {
+        editorStatus.textContent = "custom rule";
+        presetButtons.forEach((button) => {
+          button.classList.remove("is-active");
+        });
+        update();
+      });
+
+      editor.addEventListener("scroll", () => {
+        lineNumbers.scrollTop = editor.scrollTop;
+      });
+
+      editor.addEventListener("keydown", (event) => {
+        if (event.key === "Tab") {
+          event.preventDefault();
+          const start = editor.selectionStart;
+          const end = editor.selectionEnd;
+          editor.setRangeText("  ", start, end, "end");
+          editorStatus.textContent = "custom rule";
+          update();
+        }
+      });
+
+      selectPreset("relative");
+    </script>
+  </body>
+</html>
