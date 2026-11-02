@@ -1,0 +1,43 @@
+body {
+  width: 100vw;
+  height: 200vh;
+}
+#container {
+  width: 100%;
+  height: 900px;
+  display: flex;
+  gap: 10px;
+  background: #000;
+  color: aqua;
+}
+#box1 {
+  width: 160px;
+  height: 160px;
+  border: 2px solid rgb(205, 1, 1);
+  text-align: center;
+  line-height: 160px;
+  position: sticky;
+  top: 200px;
+  left: 100px;
+}
+#box2 {
+  width: 160px;
+  height: 160px;
+  border: 2px solid rgb(255, 0, 0);
+  text-align: center;
+  line-height: 160px;
+}
+#box3 {
+  width: 160px;
+  height: 160px;
+  border: 2px solid rgb(195, 0, 255);
+  text-align: center;
+  line-height: 160px;
+}
+#box4 {
+  width: 160px;
+  height: 160px;
+  border: 2px solid rgb(9, 255, 103);
+  text-align: center;
+  line-height: 160px;
+}
